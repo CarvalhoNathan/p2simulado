@@ -283,9 +283,27 @@ void exibirElementosArvore(NO* no, int qtEspacos)
 
 void exibirMaiorMenorElemento(NO* no)
 {
-	// Aqui vai seu código 
+	string meuNome = "Nathan";
+	char primeiraLetra = toupper(meuNome[0]);
 
+	if (no == NULL) {
+		cout << "A arvore esta vazia." << endl;
+		return;
+	}
 
+	NO* atual = no;
+	bool buscarMaior = (primeiraLetra >= 'A' && primeiraLetra <= 'M');
+
+	while (buscarMaior ? (atual->dir != NULL) : (atual->esq != NULL)) {
+		atual = buscarMaior ? atual->dir : atual->esq;
+	}
+
+	if (buscarMaior) {
+		cout << "Seu nome comeca com " << primeiraLetra << " (A-M). MAIOR elemento: " << atual->valor << endl;
+	}
+	else {
+		cout << "Seu nome comeca com " << primeiraLetra << " (N-Z). MENOR elemento: " << atual->valor << endl;
+	}
 }
 
 void buscarElementoArvore(NO* no, int valor)
